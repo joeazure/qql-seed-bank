@@ -12,13 +12,15 @@
       "password": "qql",
       "database": "qql",
       "host": "StudioUltra.local",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "logging": false
     },
     "production": {
       "username": "qql",
       "password": "qql",
       "database": "qql",
       "host": "StudioUltra.local",
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "logging": false
     }
   }
