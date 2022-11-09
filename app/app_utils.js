@@ -1,3 +1,22 @@
+
+const traits = {
+    flowField: "Horizontal", // 3 bits					0000 / 0000 / 0000 / 0000 / 0000 / 0000 / 0XXX
+    turbulence: "None", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 0000 / 000X / X000
+    margin: "None", // NON-ENCODED 2 bits				0000 / 0000 / 0000 / 0000 / 0000 / 0XX0 / 0000
+    colorVariety: "Low", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 000X / X000 / 0000
+    colorMode: "Simple", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 0XX0 / 0000 / 0000
+    structure: "Orbital", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 000X / X000 / 0000 / 0000
+    bullseyeRings1: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / 00X0 / 0000 / 0000 / 0000
+    bullseyeRings3: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / 0X00 / 0000 / 0000 / 0000
+    bullseyeRings7: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / X000 / 0000 / 0000 / 0000
+    ringThickness: "Thin", // NON-ENCODED 2 bits		0000 / 0000 / 00XX / 0000 / 0000 / 0000 / 0000
+    ringSize: "Small", // NON-ENCODED 2 bits			0000 / 0000 / XX00 / 0000 / 0000 / 0000 / 0000
+    sizeVariety: "Constant", // NON-ENCODED 2 bits		0000 / 00XX / 0000 / 0000 / 0000 / 0000 / 0000
+    colorPalette: "Austin", // 3 bits					000X / XX00 / 0000 / 0000 / 0000 / 0000 / 0000
+    spacing: "Dense", // NON-ENCODED 2 bits				0XX0 / 0000 / 0000 / 0000 / 0000 / 0000 / 0000
+    version: 1
+};
+
 function combined_traits(seed_model) {
     // Combines the trait and render data from a seed model into a single map
     // by adding the interesting render data to the trait
