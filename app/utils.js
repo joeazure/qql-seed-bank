@@ -105,6 +105,10 @@ function traitsFromNamed(srcName) {
   return _.cloneDeep(traits);
 }
 
+function randomPalette() {
+  return _.sample(["Austin", "Berlin", "Edinburgh", "Fidenza", "Miami", "Seattle", "Seoul"]);
+}
+
 exports.seed_from_filename = seed_from_filename;
 exports.split_hexseed = split_hexseed;
 exports.is_qql_output_filename = is_qql_output_filename;
@@ -114,3 +118,4 @@ exports.is_valid_full_seed = is_valid_full_seed;
 exports.traits_from_seed = traits_from_seed;
 exports.calcSeed = calcSeed;
 exports.traitsFromNamed = traitsFromNamed;
+exports.randomPalette = randomPalette;
