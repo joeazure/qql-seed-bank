@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/scripts/bulk_render.js",
+            "args": ["StudioUltra",
+                     "/Volumes/G-RAID1/qql-outputs/tmp",
+                     "0xED884d09749a358B31B384876C086c4bd8890287",
+                     "qql_138"
+                    ]
+        }
+    ]
+}

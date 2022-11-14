@@ -77,6 +77,18 @@ function traits_from_seed(hexseed) {
   return traits;
 }
 
+function generateSeed(target) {
+  target = target.toLowerCase();
+  if (!target.match(/^0x[0-9a-f]*$/)) {
+    throw new Error("expected hex string; got: " + target);
+  }
+  const nibbles = target.slice(2);
+  if (nibbles.length === 40) return randomSeed(Buffer.from(nibbles, "hex"));
+  if (nibbles.length === 64) return target;
+  throw new Error(
+    "expected address (bytes20) or seed (bytes32); got: " + target
+  );
+}
 function randomSeed() {
   const buf = Buffer.from(
       Array(32)
@@ -92,6 +104,7 @@ function randomSeed() {
 
 function calcSeed(address, traits) {
   // Calculates a version 1 seed from an address and Traits
+  address = address.toLowerCase();
   const salt = [...Array(24)].map(() => Math.floor(rng() * 16).toString(16)).join("");
   let seed = traitsLib.encodeTraits(`${address}${salt}`, traits);
   seed = `${seed.substring(0, 54)}${[...Array(4)].map(() => "f").join("")}${'1'}${seed.substring(59)}`;
@@ -100,7 +113,7 @@ function calcSeed(address, traits) {
 }
 
 function traitsFromNamed(srcName) {
-  // assumes trait jsonf iles in ../traits dir
+  // assumes trait json iles in ../traits dir
   const traits = require(`../traits/${srcName}.json`);
   return _.cloneDeep(traits);
 }
@@ -116,6 +129,8 @@ exports.is_qql_render_filename = is_qql_render_filename;
 exports.seedlist_from_dir = seedlist_from_dir;
 exports.is_valid_full_seed = is_valid_full_seed;
 exports.traits_from_seed = traits_from_seed;
+exports.generateSeed = generateSeed;
+
 exports.calcSeed = calcSeed;
 exports.traitsFromNamed = traitsFromNamed;
 exports.randomPalette = randomPalette;
