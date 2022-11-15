@@ -1,0 +1,18 @@
+{
+    "flowField": "Explosive", 
+    "turbulence": "Low", 
+    "margin": "Crisp", 
+    "colorVariety": "Low",
+    "colorMode": "Stacked",
+    "structure": "Formation",
+    "bullseyeRings1": "On",
+    "bullseyeRings3": "Off",
+    "bullseyeRings7": "Off",
+    "ringThickness": "Thin",
+    "ringSize": "Small",
+    "sizeVariety": "Constant",
+    "colorPalette": "Edinburgh",
+    "spacing": "Dense",
+    "version": 1
+  }
+  

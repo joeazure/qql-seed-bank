@@ -62,7 +62,7 @@ function ingest_seed_list(seed_list) {
   }
 }
 
-async function insert_render(host, location, filename, hexseed, width, renderData) {
+async function insertRender(host, location, filename, hexseed, width, renderData) {
   // Seed/Traits
   var seed_id = await ingest_seed(hexseed);
   console.log('New Seed: ' + seed_id);
@@ -96,6 +96,5 @@ async function insert_render(host, location, filename, hexseed, width, renderDat
 
 exports.ingest_seed = ingest_seed;
 exports.ingest_seed_list = ingest_seed_list;
-exports.insert_render = insert_render;
-
+exports.insertRender = insertRender;
   

@@ -5,9 +5,9 @@ const render = require("../app/render");
 const webp = require('webp-converter'); //mkdir node_modules/webp-converter/temp
 const seed_db = require('../app/seed_db.js');
 
-const RENDER_CNT = 3;
+const RENDER_CNT = 1000;
 const TWO_RING = false;
-const RENDER_WIDTH = 1200;
+const RENDER_WIDTH = 800;
 
 async function main(args) {
     // Args
@@ -67,15 +67,14 @@ async function main(args) {
       const infoFile = path.join(outdir, basename + ".txt");
 
       // write files
-      let result = webp.buffer2webpbuffer(imageData, "png", "-q 60");
-      result.then(function(result) {
-        fs.writeFileSync(webpFile, result);
-      });
+      const result = await webp.buffer2webpbuffer(imageData, "png", "-q 60");
+      await fs.promises.writeFile(webpFile, result);
+
       await fs.promises.writeFile(infoFile, JSON.stringify(renderData, null, 2));
       //await fs.promises.writeFile(outfile, imageData);
 
       // insert the render into the DB
-      //await seed_db.insert_render(host, fullOutdir, basename, seed, RENDER_WIDTH, renderData);
+      await seed_db.insertRender(host, fullOutdir, basename, seed, RENDER_WIDTH, renderData);
     }
     console.timeEnd(timetaken);
 }
