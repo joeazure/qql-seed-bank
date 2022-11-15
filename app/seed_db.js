@@ -94,6 +94,8 @@ async function insertRender(host, location, filename, hexseed, width, renderData
   });
 }
 
+//async function 
+
 exports.ingest_seed = ingest_seed;
 exports.ingest_seed_list = ingest_seed_list;
 exports.insertRender = insertRender;
