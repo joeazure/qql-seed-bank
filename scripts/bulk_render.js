@@ -72,7 +72,9 @@ async function main(args) {
       await fs.promises.writeFile(webpFile, result);
 
       await fs.promises.writeFile(infoFile, JSON.stringify(renderData, null, 2));
-      //await fs.promises.writeFile(outfile, imageData);
+
+      // If you wish to save the rendered image as PNG as well, un-comment this:
+      // await fs.promises.writeFile(outfile, imageData);
 
       // insert the render into the DB
       await seed_db.insertRender(host, fullOutdir, basename, seed, RENDER_WIDTH, renderData);
