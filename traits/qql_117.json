@@ -1,0 +1,17 @@
+{
+    "flowField": "Circular",
+    "turbulence": "High",
+    "margin": "Wide",
+    "colorVariety": "High",
+    "colorMode": "Zebra",
+    "structure": "Formation",
+    "bullseyeRings1": "On",
+    "bullseyeRings3": "Off",
+    "bullseyeRings7": "Off",
+    "ringThickness": "Thick",
+    "ringSize": "Large",
+    "sizeVariety": "Wild",
+    "colorPalette": "Edinburgh",
+    "spacing": "Dense",
+    "version": 1
+  }

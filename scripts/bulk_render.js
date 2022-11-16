@@ -5,8 +5,8 @@ const render = require("../app/render");
 const webp = require('webp-converter'); //mkdir node_modules/webp-converter/temp
 const seed_db = require('../app/seed_db.js');
 
-const RENDER_CNT = 2000;
-const TWO_RING = false;
+const RENDER_CNT = 2;
+const TWO_RING = true;
 const RENDER_WIDTH = 800;
 
 async function main(args) {
@@ -35,6 +35,7 @@ async function main(args) {
       } else {
         // use traits to make a seed
         const traits = utils.traitsFromNamed(namedTraits);
+        traits["colorPalette"] = utils.randomPalette();
         seed = utils.calcSeed(wallet, traits);   // Custom traits    
       }
       if (TWO_RING == true) {

@@ -21,7 +21,7 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "QQL SeedDB." });
+  res.json({ message: "QQL SeedDB" });
 });
 
 // API routes

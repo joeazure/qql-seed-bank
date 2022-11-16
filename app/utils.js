@@ -1,6 +1,6 @@
 // Utility functions for qql-headless
 const fs = require("fs");
-const traitsLib = require("./vendor/qql-traits.min.js");
+const traitsLib = require("qql-headless/src/vendor/qql-traits.min.js");
 const rng = require("seedrandom")();
 const _ = require("lodash");
 

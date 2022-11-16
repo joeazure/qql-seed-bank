@@ -24,6 +24,7 @@
     "lodash": "^4.17.21",
     "mysql2": "^2.3.3",
     "p5": "^1.5.0",
+    "qql-headless": "github:qql-art/qql-headless",
     "seedrandom": "^3.0.5",
     "sequelize": "^6.25.5",
     "webp-converter": "^2.3.3"

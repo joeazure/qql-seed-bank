@@ -7,7 +7,7 @@ const jsdom = require("jsdom");
 // it'll fail with a late run-time error. Check here and fail fast.
 require("canvas");
 
-const { default: qql } = require("./vendor/qql.min.js");
+const { default: qql } = require("qql-headless/src/vendor/qql.min.js");
 
 async function render({
   seed,

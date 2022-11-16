@@ -13,9 +13,9 @@
             ],
             "program": "${workspaceFolder}/scripts/bulk_render.js",
             "args": ["StudioUltra",
-                     "/Volumes/G-RAID1/qql-outputs/tmp",
+                     "/Volumes/G-RAID1/qql-outputs/render11",
                      "0xED884d09749a358B31B384876C086c4bd8890287",
-                     "qql_138"
+                     "qql_117"
                     ]
         }
     ]
