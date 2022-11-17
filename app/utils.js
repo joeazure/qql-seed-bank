@@ -7,7 +7,7 @@ const _ = require("lodash");
 function is_qql_output_filename(fname) {
   // Look for .png extension and existence og '-0x'
   const f = fname.toLowerCase();
-  return (f.includes("-0x")) && (f.toLowerCase().endsWith(".png"));
+  return (f.includes("-0x")) && (f.toLowerCase().endsWith(".png") || f.toLowerCase().endsWith(".png.webp"));
 }
 
 function is_qql_render_filename(fname) {
@@ -40,10 +40,10 @@ function seeds_and_traits_from_dir(dir_name) {
 
 function seed_from_filename(filename) {
   if (!is_qql_output_filename(filename)) {
-    throw new Error("expected valid QQL output filename. got: " + filename);
+    throw new Error("Expected valid QQL output filename. got: " + filename);
   }
   var seed = filename.substr(filename.lastIndexOf('-')+1) || filename;
-  seed = seed.substr(0, seed.lastIndexOf('.')) || seed;
+  seed = seed.substr(0, seed.lastIndexOf('.png')) || seed;
   return seed;
 }
 
@@ -72,7 +72,7 @@ function split_hexseed(seed) {
   return { eth_hex, qql_hex };
 }
 
-function traits_from_seed(hexseed) {
+function traitsFromSeed(hexseed) {
   var traits = traitsLib.extractTraits(hexseed);
   return traits;
 }
@@ -128,7 +128,7 @@ exports.is_qql_output_filename = is_qql_output_filename;
 exports.is_qql_render_filename = is_qql_render_filename;
 exports.seedlist_from_dir = seedlist_from_dir;
 exports.is_valid_full_seed = is_valid_full_seed;
-exports.traits_from_seed = traits_from_seed;
+exports.traitsFromSeed = traitsFromSeed;
 exports.generateSeed = generateSeed;
 
 exports.calcSeed = calcSeed;

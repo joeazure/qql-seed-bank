@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const { ArgumentParser } = require("argparse");
 const utils = require("../app/utils");
-const render = require("../app/render");
-const webp = require('webp-converter'); //mkdir node_modules/webp-converter/temp
+const render = require("qql-headless/src/render");
+const webp = require('webp-converter'); // Don't forget mkdir node_modules/webp-converter/temp
 
 const RENDER_WIDTH = 800;
 

@@ -33,7 +33,7 @@ async function ingest_seed(hexseed) {
       algorithm_hexseed: qql_hex,
       wallet_id: owner_wallet.id
     });
-    var traits = utils.traits_from_seed(hexseed);
+    var traits = utils.traitsFromSeed(hexseed);
     var new_trait = await db.trait.create({
       seed_id: new_seed.id,
       version: traits["version"],
