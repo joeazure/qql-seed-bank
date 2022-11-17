@@ -22,7 +22,10 @@ async function main(parsedArgs) {
     let i = 0;
     
     // calculate all the seeds first
-    console.log(`Generating ${RENDER_COUNT} seeds...`);       
+    console.log(`Generating ${RENDER_COUNT} seeds with traits: ${namedTraits}...`); 
+    if (palette != undefined) {
+      console.log(`Palette override set to: ${palette}`);
+    }      
     while (i < RENDER_COUNT) {
       var seed;
       if (namedTraits == "random") {

@@ -46,6 +46,15 @@ $ node scripts/bulk_render.js --output <dir> --wallet <address> 5
 $ node ./scripts/bulk_render.js --output /Volumes/G-RAID1/qql-outputs/render12 --wallet 0xED884d09749a358B31B384876C086c4bd8890287 --traits qql_109 --render_host StudioUltra --use_db true 5
 ```
 
+### Palette Override
+
+One fun feature I added is the ability to "override" the paleete specified in the supplied traits json file.  To use this:
+```
+$ node ./scripts/bulk_render.js --output /Volumes/G-RAID1/qql-outputs/render12 --wallet 0xED884d09749a358B31B384876C086c4bd8890287 --traits qql_93 --palette_override Seattle 5
+```
+
+The value is the name of a valid QQL palette or the work "random" - which will randomize the palette for each seed.
+
 ## Notes
 * IN order to save disk space, the renders are saved as compressed "webp" files.  They have a '.webp' extension.  If you wish to save the output as PNG file as well, there is a line to un-comment in the scripts/bulk_render.py file.
 * The temp directory in node_modules/webp-converter is just for temp files used by the webp-converter library (Iwill get around to removing this bit at some time)
