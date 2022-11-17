@@ -13,7 +13,7 @@ async function main(parsedArgs) {
     const wallet = parsedArgs.wallet;
     const namedTraits = parsedArgs.traits;
     const RENDER_COUNT = parsedArgs.count;
-    const use_db = parsedArgs.use_db;
+    const useDb = parsedArgs.use_db;
     const renderHost = parsedArgs.renderHost;
     const twoRings = parsedArgs.two_rings;
     const palette = parsedArgs.palette_override;
@@ -44,14 +44,14 @@ async function main(parsedArgs) {
         // use traits to make a seed
         const traits = utils.traitsFromNamed(namedTraits);
         // Palette override
-        if (palette_override != undefined) {
-          if (palette_override == "random") {
+        if (palette != undefined) {
+          if (palette == "random") {
             traits["colorPalette"] = utils.randomPalette();
           } else {
-            traits["colorPalette"] = palette_override;
+            traits["colorPalette"] = palette;
           }
         }
-        seed = utils.calcSeed(wallet, traits);    
+        seed = utils.calcSeed(wallet, traits);  
       }
       if (twoRings == true) {
         const s2 = seed.substr(0, seed.length-4) + 'f' + seed.substr(-3);
@@ -71,8 +71,11 @@ async function main(parsedArgs) {
     console.time(timetaken);
 
     // setup database if use_db is true
-    if (use_db == true ) {
-      const seed_db = require('../app/seed_db.js');
+
+    if (useDb) {
+      console.log("Setting up DB...");
+      let seed_db = require('../app/seed_db.js');
+      console.log("DB Setup complete.");
     }
 
     for (let i = 0; i < seedList.length; i++) {
@@ -97,7 +100,7 @@ async function main(parsedArgs) {
       // await fs.promises.writeFile(outfile, imageData);
 
       // insert the render into the DB
-      if (use_db == true) {
+      if (useDb) {
         await seed_db.insertRender(renderHost, fullOutdir, basename, seed, RENDER_WIDTH, renderData);
       }
     }
@@ -111,7 +114,7 @@ parser.add_argument("--wallet", "--w", {help: "The ethereum wallet address (0x..
 parser.add_argument("--traits", {help: "The named traits to render for (do not inlude '.json')", default: "random"});
 parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", type: Boolean, default: false});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
-parser.add_argument("--use_db", {help: "Set to 'yes' to store the seed database into the database", type: Boolean, default: false});
+parser.add_argument("--use_db", {help: "Set to true to store the seed database into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});
 parser.add_argument("count", {type: 'int', help: "The number of outputs to render"});
 
