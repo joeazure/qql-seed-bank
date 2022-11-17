@@ -18,23 +18,11 @@ async function main(parsedArgs) {
     const twoRings = parsedArgs.two_rings;
     const palette = parsedArgs.palette_override;
 
-    // Old Args
-    // const [host, outdir, wallet, namedTraits] = args;
-    // if (host == null || 
-    //     outdir == null || 
-    //     wallet == null) {
-    //   throw new Error("usage: bulk_render <host> <outdir> <wallet> [namedTraits]");
-    // }
-    // if (namedTraits == null) {
-    //   console.log(`Generating ${RENDER_CNT} random seeds...`);
-    // } else {
-    //   console.log(`Generating ${RENDER_CNT} seeds from traits ${namedTraits}...`);  
-    // }
-
     let seedList = []; 
     let i = 0;
     
     // calculate all the seeds first
+    console.log(`Generating ${RENDER_COUNT} seeds...`);       
     while (i < RENDER_COUNT) {
       var seed;
       if (namedTraits == "random") {
@@ -60,9 +48,8 @@ async function main(parsedArgs) {
         seedList.push(seed);
       }
       i++;
-      console.log("Generated seed " + i+"/"+RENDER_COUNT);       
     }
-
+    console.log("Seed generation complete");
     console.log("Rendering outputs...");
 
     // render and save the outputs

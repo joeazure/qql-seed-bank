@@ -65,7 +65,7 @@ function ingest_seed_list(seed_list) {
 async function insertRender(host, location, filename, hexseed, width, renderData) {
   // Seed/Traits
   var seed_id = await ingest_seed(hexseed);
-  console.log('New Seed: ' + seed_id);
+  console.log('New Seed ID: ' + seed_id);
   // Location
   var [location, created] = await db.location.findOrCreate({
     where: {
