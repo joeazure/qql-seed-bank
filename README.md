@@ -28,8 +28,8 @@ This is probably the reason youare reading this...
 
 Usage:
     ```
-    $ # Render 
-    $ node scripts/bulk_render.js blah <output dir> "<wallet>" [named traits]
+    $ # Render 5 outputs into <dir> using wallet <address>
+    $ node scripts/bulk_render.js --output <dir> --wallet <address> 5
     ```
 
 ## Notes
