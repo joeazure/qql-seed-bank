@@ -101,4 +101,6 @@ The value is the name of a valid QQL palette or the work "random" - which will r
 
 ## TODO
 * Error handling
-* Render host check when using DB 
+* Render host check when using DB
+* Remove app/render.js from this codebase and update to use it from the qql-headless dependency
+
