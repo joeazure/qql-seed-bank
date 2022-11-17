@@ -34,6 +34,7 @@ Database connection parameters used by the database models are located in "confi
 This is probably the reason youare reading this...
 
 Usage:
+
     ```
     $ node scripts/bulk_render.js -h
 
@@ -48,7 +49,7 @@ Usage:
 ## Notes
 * IN order to save disk space, the renders are saved as compressed "webp" files.  They have a '.webp' extension.  If you wish to save the output as PNG file as well, there is a line to un-comment in the scripts/bulk_render.py file.
 * The temp directory in node_modules/webp-converter is just for temp files used by the webp-converter library (Iwill get around to removing this bit at some time)
-* 
+* The output filenames stored in the DB are for the PNG files that are not actually stored by default. Append '.webp' to that filename for the version stored by default.
 
 ### Thank You
 * Tyler Hobbs and Dandelion Wist for QQL and qql-headless
