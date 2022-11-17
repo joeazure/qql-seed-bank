@@ -14,7 +14,7 @@ async function main(parsedArgs) {
     const namedTraits = parsedArgs.traits;
     const RENDER_COUNT = parsedArgs.count;
     const useDb = parsedArgs.use_db;
-    const renderHost = parsedArgs.renderHost;
+    const renderHost = parsedArgs.render_host;
     const twoRings = parsedArgs.two_rings;
     const palette = parsedArgs.palette_override;
 
@@ -71,10 +71,10 @@ async function main(parsedArgs) {
     console.time(timetaken);
 
     // setup database if use_db is true
-
+    var seed_db;
     if (useDb) {
       console.log("Setting up DB...");
-      let seed_db = require('../app/seed_db.js');
+      seed_db = require('../app/seed_db.js');
       console.log("DB Setup complete.");
     }
 
