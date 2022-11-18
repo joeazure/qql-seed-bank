@@ -26,7 +26,7 @@ Note - the qql-headless repo published by the QQL project (https://github.com/qq
 but that file may change or add additional dependecies that are not reflected in this project, so you may have to
 install additional pacakages.
 
-## MySQL Database
+## MySQL Database (OPTIONAL)
 
 If you wish to try storing seeds, traits, etc into a database as you render outputs, the schema create script
 is located in the file: database/qql_seed-db.sql file. It assumes a database named "qql". 
