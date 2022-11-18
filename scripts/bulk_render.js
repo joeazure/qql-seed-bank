@@ -5,7 +5,7 @@ const utils = require("../app/utils");
 const render = require("qql-headless/src/render");
 const webp = require('webp-converter'); // Don't forget mkdir node_modules/webp-converter/temp
 
-const RENDER_WIDTH = 800;
+const RENDER_WIDTH = 1200;
 
 async function main(parsedArgs) {
     // Args
@@ -81,7 +81,7 @@ async function main(parsedArgs) {
       const infoFile = path.join(outdir, basename + ".txt");
 
       // write files
-      const result = await webp.buffer2webpbuffer(imageData, "png", "-q 60");
+      const result = await webp.buffer2webpbuffer(imageData, "png", "-q 80");
       await fs.promises.writeFile(webpFile, result);
 
       await fs.promises.writeFile(infoFile, JSON.stringify(renderData, null, 2));
