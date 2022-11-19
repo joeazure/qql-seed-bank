@@ -112,9 +112,3 @@ main(parser.parse_args()).catch((e) => {
   process.exitCode = process.exitCode || 1;
   console.error(e);
 });
-
-
-// main(process.argv.slice(2)).catch((e) => {
-//     process.exitCode = process.exitCode || 1;
-//     console.error(e);
-//   });
