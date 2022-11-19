@@ -122,22 +122,13 @@ function randomPalette() {
   return _.sample(["Austin", "Berlin", "Edinburgh", "Fidenza", "Miami", "Seattle", "Seoul"]);
 }
 
-function traitsFromToken(qqlTokenNumber) {
+async function traitsFromToken(qqlTokenNumber) {
   // Return traits map from a minted QQL token number
-  const request = require('request');
+  const axios = require('axios');
 
   let url = `https://token.qql.art/qql/${qqlTokenNumber}`;
-  let options = {json: true};
-
-  request(url, options, (error, res, body) => {
-      if (error) {
-          return  console.log(error)
-      };
-      if (!error && res.statusCode == 200) {
-          console.log(body);
-          return body["traits"];
-      };
-  });
+  var r = await axios.get(url);
+  return r.data.traits;
 }
 
 exports.seed_from_filename = seed_from_filename;
