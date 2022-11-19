@@ -122,6 +122,24 @@ function randomPalette() {
   return _.sample(["Austin", "Berlin", "Edinburgh", "Fidenza", "Miami", "Seattle", "Seoul"]);
 }
 
+function traitsFromToken(qqlTokenNumber) {
+  // Return traits map from a minted QQL token number
+  const request = require('request');
+
+  let url = `https://token.qql.art/qql/${qqlTokenNumber}`;
+  let options = {json: true};
+
+  request(url, options, (error, res, body) => {
+      if (error) {
+          return  console.log(error)
+      };
+      if (!error && res.statusCode == 200) {
+          console.log(body);
+          return body["traits"];
+      };
+  });
+}
+
 exports.seed_from_filename = seed_from_filename;
 exports.split_hexseed = split_hexseed;
 exports.is_qql_output_filename = is_qql_output_filename;
@@ -133,4 +151,5 @@ exports.generateSeed = generateSeed;
 
 exports.calcSeed = calcSeed;
 exports.traitsFromNamed = traitsFromNamed;
+exports.traitsFromToken = traitsFromToken;
 exports.randomPalette = randomPalette;
