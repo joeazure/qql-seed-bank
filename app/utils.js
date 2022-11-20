@@ -4,6 +4,17 @@ const traitsLib = require("qql-headless/src/vendor/qql-traits.min.js");
 const rng = require("seedrandom")();
 const _ = require("lodash");
 
+// Valid background colors
+const BG_COLORS = {
+  "Austin": ["Austin Blue", "Austin Green", "Austin White", "Austin Yellow"],
+  "Berlin": ["Berlin Cool Purple", "Berlin Dark Green", "Berlin Gray Blue", "Berlin Intense Blue", "Berlin Warm Purple"],
+  "Edinburgh": ["Edinburgh Blue", "Edinburgh Dark Brown", "Edinburgh Green", "Edinburgh Mid Brown", "Edinburgh Tan"],
+  "Fidenza": ["Fidenza Brown", "Fidenza Dark Blue", "Fidenza Green", "Fidenza Light Green", "Fidenza Newsprint", "Fidenza Pink"],
+  "Miami": ["Miami Dark Purple", "Miami Rich Blue", "Miami White"],
+  "Seattle": ["Seattle Dark Gray", "Seattle Mid Blue", "Seattle Warm Gray"],
+  "Seoul": ["Seoul Dark Blue", "Seoul Dark Gray", "Seoul Light Blue", "Seoul Light Gray", "Seoul Light Pink", "Seoul Mid Blue", "Seoul Mid Pink"]
+};
+
 function is_qql_output_filename(fname) {
   // Look for .png extension and existence og '-0x'
   const f = fname.toLowerCase();
