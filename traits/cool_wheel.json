@@ -1,0 +1,18 @@
+{
+    "flowField": "Horizontal",
+    "turbulence": "High",
+    "margin": "None",
+    "colorVariety": "Low",
+    "colorMode": "Stacked",
+    "structure": "Orbital",
+    "bullseyeRings1": "On",
+    "bullseyeRings3": "On",
+    "bullseyeRings7": "On",
+    "ringThickness": "Mixed",
+    "ringSize": "Medium",
+    "sizeVariety": "Wild",
+    "colorPalette": "Fidenza",
+    "spacing": "Dense",
+    "version": 1
+  }
+  
