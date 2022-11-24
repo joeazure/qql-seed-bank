@@ -16,6 +16,15 @@ This repository has a few different things going on (WIP = Work in Progress):
 
 ## Installation
 
+Assumes you have Node.js installed on you sytem. There are multiple ways to do this - personally, 
+I use Node Version Manager (for mac):
+
+https://github.com/nvm-sh/nvm#intro
+
+Installers for Node.js are also availbale at the website:
+
+https://nodejs.org/en/download/
+
 ```
 $ npm install
 $ mkdir node_modules/webp-converter/temp
