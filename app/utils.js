@@ -1,8 +1,12 @@
 // Utility functions for qql-headless
 const fs = require("fs");
+const path = require("path");
 const traitsLib = require("qql-headless/src/vendor/qql-traits.min.js");
 const rng = require("seedrandom")();
 const _ = require("lodash");
+const webp = require('webp-converter'); // Don't forget mkdir node_modules/webp-converter/temp
+const render = require("qql-headless/src/render");
+
 
 // Valid background colors
 const BG_COLORS = {
@@ -142,6 +146,17 @@ async function traitsFromToken(qqlTokenNumber) {
   return r.data.traits;
 }
 
+async function reRenderFile(outdir, webpFilename, renderWidth) {
+  const seed = seed_from_filename(webpFilename);
+  console.log (`Re-rendering webp file for seed: ${seed}`);
+  const { imageData, renderData } = await render({ seed, width: renderWidth });
+  const webpFile = path.join(outdir, webpFilename);
+  console.log(renderData);
+  const result = await webp.buffer2webpbuffer(imageData, "png", "-q 90");
+  console.log("Writing webp data to: " + webpFile);
+  await fs.promises.writeFile(webpFile, result);
+}
+
 exports.seed_from_filename = seed_from_filename;
 exports.split_hexseed = split_hexseed;
 exports.is_qql_output_filename = is_qql_output_filename;
@@ -155,3 +170,4 @@ exports.calcSeed = calcSeed;
 exports.traitsFromNamed = traitsFromNamed;
 exports.traitsFromToken = traitsFromToken;
 exports.randomPalette = randomPalette;
+exports.reRenderFile = reRenderFile;
