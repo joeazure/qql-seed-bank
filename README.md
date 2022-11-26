@@ -63,7 +63,7 @@ $ node ./scripts/bulk_render.js --output /tmp/qql-outputs --wallet 0x37B15E06Ad0
 
 I found it handy to be able to specify traits by saving them into a JSON file.  These files are located in the "traits" directory and the "name" for each set of traits is just the filenam (minus the ".json" extension).  Some examples included for some odf the existing minted QQL tokens.
 
-To create you own, just add a file to the directory named something like: "super-traits.json" and include within it:
+To create your own, just add a file to the directory named something like: "super-traits.json" and include within it:
 ```
 {
     "flowField": "Random Radial", 
@@ -111,4 +111,5 @@ The value is the name of a valid QQL palette or the work "random" - which will r
 ## TODO
 * Error handling
 * Render host check when using DB
+* Make boolean params consistent
 

@@ -110,7 +110,7 @@ parser.add_argument("--wallet", "--w", {help: "The ethereum wallet address (0x..
 parser.add_argument("--traits", {help: "The named traits to render for (do not inlude '.json')", default: "random"});
 parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", default: "no"});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
-parser.add_argument("--use_db", {help: "Set to true to store the seed database into the database", type: Boolean, default: false});
+parser.add_argument("--use_db", {help: "Set to true to store the seed data into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});
 parser.add_argument("count", {type: 'int', help: "The number of outputs to render"});
 
