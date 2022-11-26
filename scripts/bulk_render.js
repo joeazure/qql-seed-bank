@@ -25,7 +25,13 @@ async function main(parsedArgs) {
     console.log(`Generating ${RENDER_COUNT} seeds with traits: ${namedTraits}...`); 
     if (palette != undefined) {
       console.log(`Palette override set to: ${palette}`);
-    }      
+    }
+
+    var traits;
+    if (namedTraits != "random") {
+      traits = utils.traitsFromNamed(namedTraits);
+      console.log("Generating seeds with Traits:");
+    }
     while (i < RENDER_COUNT) {
       var seed;
       if (namedTraits == "random") {
@@ -33,7 +39,7 @@ async function main(parsedArgs) {
         seed = utils.generateSeed(wallet);
       } else {
         // use traits to make a seed
-        const traits = utils.traitsFromNamed(namedTraits);
+       // const traits = utils.traitsFromNamed(namedTraits);
         // Palette override
         if (palette != undefined) {
           if (palette == "random") {
@@ -42,10 +48,10 @@ async function main(parsedArgs) {
             traits["colorPalette"] = palette;
           }
         }
-        seed = utils.calcSeed(wallet, traits);  
+        seed = utils.calcSeed(wallet, traits);
       }
-      if (twoRings == true) {
-        const s2 = seed.substr(0, seed.length-4) + 'f' + seed.substr(-3);
+      if (twoRings == "yes") {
+        const s2 = seed.substr(0, seed.length-4) + 'e' + seed.substr(-3);
         seedList.push(s2);
       } else {
         seedList.push(seed);
@@ -102,7 +108,7 @@ const parser = new ArgumentParser({ description: 'Bulk Render QQL outputs.' });
 parser.add_argument("--output", "--o", {help: "The directory for the output files", required: true});
 parser.add_argument("--wallet", "--w", {help: "The ethereum wallet address (0x...)", required: true});
 parser.add_argument("--traits", {help: "The named traits to render for (do not inlude '.json')", default: "random"});
-parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", type: Boolean, default: false});
+parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", default: "no"});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
 parser.add_argument("--use_db", {help: "Set to true to store the seed database into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});
