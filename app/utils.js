@@ -19,6 +19,10 @@ const BG_COLORS = {
   "Seoul": ["Seoul Dark Blue", "Seoul Dark Gray", "Seoul Light Blue", "Seoul Light Gray", "Seoul Light Pink", "Seoul Mid Blue", "Seoul Mid Pink"]
 };
 
+function isBackgroundValid(paletteName, colorName) {
+  return (BG_COLORS[paletteName].includes(colorName));
+}
+
 function is_qql_output_filename(fname) {
   // Look for .png extension and existence og '-0x'
   const f = fname.toLowerCase();
@@ -171,3 +175,4 @@ exports.traitsFromNamed = traitsFromNamed;
 exports.traitsFromToken = traitsFromToken;
 exports.randomPalette = randomPalette;
 exports.reRenderFile = reRenderFile;
+exports.isBackgroundValid = isBackgroundValid;

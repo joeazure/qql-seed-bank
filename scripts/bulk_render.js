@@ -17,20 +17,30 @@ async function main(parsedArgs) {
     const renderHost = parsedArgs.render_host;
     const twoRings = parsedArgs.two_rings;
     const palette = parsedArgs.palette_override;
+    const bgColorOverride = parsedArgs.bg_color_override;
 
     let seedList = []; 
     let i = 0;
     
     // calculate all the seeds first
-    console.log(`Generating ${RENDER_COUNT} seeds with traits: ${namedTraits}...`); 
+
     if (palette != undefined) {
       console.log(`Palette override set to: ${palette}`);
+    }
+    if (bgColorOverride != "none") {
+      console.log(`Background color override set to ${bgColorOverride}`);
+    }
+    if (twoRings == "yes") {
+      console.log("Two ring override specified!");
     }
 
     var traits;
     if (namedTraits != "random") {
       traits = utils.traitsFromNamed(namedTraits);
       console.log("Generating seeds with Traits:");
+      console.log(JSON.stringify(traits, null, 2));
+    } else {
+      console.log("Generating seeds with random Traits");
     }
     while (i < RENDER_COUNT) {
       var seed;
@@ -39,7 +49,7 @@ async function main(parsedArgs) {
         seed = utils.generateSeed(wallet);
       } else {
         // use traits to make a seed
-       // const traits = utils.traitsFromNamed(namedTraits);
+        // const traits = utils.traitsFromNamed(namedTraits);
         // Palette override
         if (palette != undefined) {
           if (palette == "random") {
@@ -78,6 +88,12 @@ async function main(parsedArgs) {
       seed = seedList[i];
       //render to buffer
       const { imageData, renderData } = await render({ seed, width: RENDER_WIDTH });
+      if (bgColorOverride != "none") {
+        if (renderData["backgroundColor"] != bgColorOverride) {
+          console.log(`backgroundColor mismatch - ${renderData["backgroundColor"]} ... skipping render.`);
+          continue;
+        }
+      }
       // filenames
       const basename = `${new Date().toISOString()}-${seed}.png`;
       const webpName = basename + ".webp";
@@ -110,6 +126,7 @@ parser.add_argument("--wallet", "--w", {help: "The ethereum wallet address (0x..
 parser.add_argument("--traits", {help: "The named traits to render for (do not inlude '.json')", default: "random"});
 parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", default: "no"});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
+parser.add_argument("--bg_color_override", {help: "Set to a valid color name for the palette specified in palette_override", default: "none"});
 parser.add_argument("--use_db", {help: "Set to true to store the seed data into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});
 parser.add_argument("count", {type: 'int', help: "The number of outputs to render"});
