@@ -1,21 +1,30 @@
+const config = require(__dirname + '/config/apiConfig.json');
 
-const traits = {
-    flowField: "Horizontal", // 3 bits					0000 / 0000 / 0000 / 0000 / 0000 / 0000 / 0XXX
-    turbulence: "None", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 0000 / 000X / X000
-    margin: "None", // NON-ENCODED 2 bits				0000 / 0000 / 0000 / 0000 / 0000 / 0XX0 / 0000
-    colorVariety: "Low", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 000X / X000 / 0000
-    colorMode: "Simple", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 0000 / 0XX0 / 0000 / 0000
-    structure: "Orbital", // NON-ENCODED 2 bits			0000 / 0000 / 0000 / 000X / X000 / 0000 / 0000
-    bullseyeRings1: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / 00X0 / 0000 / 0000 / 0000
-    bullseyeRings3: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / 0X00 / 0000 / 0000 / 0000
-    bullseyeRings7: "On", // NON-ENCODED 1 bit			0000 / 0000 / 0000 / X000 / 0000 / 0000 / 0000
-    ringThickness: "Thin", // NON-ENCODED 2 bits		0000 / 0000 / 00XX / 0000 / 0000 / 0000 / 0000
-    ringSize: "Small", // NON-ENCODED 2 bits			0000 / 0000 / XX00 / 0000 / 0000 / 0000 / 0000
-    sizeVariety: "Constant", // NON-ENCODED 2 bits		0000 / 00XX / 0000 / 0000 / 0000 / 0000 / 0000
-    colorPalette: "Austin", // 3 bits					000X / XX00 / 0000 / 0000 / 0000 / 0000 / 0000
-    spacing: "Dense", // NON-ENCODED 2 bits				0XX0 / 0000 / 0000 / 0000 / 0000 / 0000 / 0000
-    version: 1
-};
+const hostUrlPrefixes = config["hostUrlMappings"];
+
+function urlForLocation(location) {
+    // Creates a url prefix for a given location model
+    
+    console.log("Looking up host: "+location.host);
+    return `${hostUrlPrefixes[location.host]}${location.folderPath}`;
+}
+
+function galleryImageData(seed_model) {
+    /* Returns basi c map of fields required by the UI gallery
+    {
+        src:
+        width:
+        height:  
+    } */
+    var url = urlForLocation(seed_model.render.output.location);
+    url = url + '/' + seed_model.render.output.filename;
+
+    const ret = {};
+    ret["src"] = url;
+    ret["width"] = seed_model.render.output.pixelWidth;
+    //console.log(ret);
+    return ret;
+}
 
 function combined_traits(seed_model) {
     // Combines the trait and render data from a seed model into a single map
@@ -44,6 +53,7 @@ function condense_seed(s_model) {
     };
     mini["filename"] = s_model.render.output.filename;
     mini["pixel_width"] = s_model.render.output.pixelWidth;
+    mini["display_info"] = galleryImageData(s_model);
     return mini;
 }
 
