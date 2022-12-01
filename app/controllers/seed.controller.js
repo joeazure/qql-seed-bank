@@ -2,7 +2,7 @@ const db = require("../models");
 const Seed = db.seed;
 const utils = require("../app_utils");
 
-// Find a single Tutorial with an id
+// Find a single Seed with an id
 exports.findOneById = (req, res) => {
     const id = req.params.id;
 
