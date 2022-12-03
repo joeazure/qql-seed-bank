@@ -1,17 +1,18 @@
 {
-    "flowField": "Circular",
+    "flowField": "Spiral",
     "turbulence": "None",
     "margin": "Wide",
     "colorVariety": "High",
     "colorMode": "Stacked",
-    "structure": "Orbital",
+    "structure": "Formation",
     "bullseyeRings1": "On",
-    "bullseyeRings3": "On",
+    "bullseyeRings3": "Off",
     "bullseyeRings7": "Off",
-    "ringThickness": "Mixed",
+    "ringThickness": "Thin",
     "ringSize": "Large",
     "sizeVariety": "Wild",
-    "colorPalette": "Fidenza",
-    "spacing": "Sparse",
+    "colorPalette": "Edinburgh",
+    "spacing": "Dense",
     "version": 1
   }
+  
