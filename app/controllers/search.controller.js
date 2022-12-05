@@ -18,8 +18,7 @@ exports.getNRandom = (req, res) => {
         seeds = [];
         // Iterate over all the seeds
         data.forEach(s => {
-          console.log("Adding a seed");
-          seeds.push(utils.condense_seed(s));
+          seeds.push(utils.seedDisplayInfo(s));
         });
         const returnData = {};
         returnData["seeds"] = seeds;

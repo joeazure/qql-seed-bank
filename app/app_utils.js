@@ -4,8 +4,6 @@ const hostUrlPrefixes = config["hostUrlMappings"];
 
 function urlForLocation(location) {
     // Creates a url prefix for a given location model
-    
-    console.log("Looking up host: "+location.host);
     return `${hostUrlPrefixes[location.host]}${location.folderPath}`;
 }
 
@@ -57,5 +55,14 @@ function condense_seed(s_model) {
     return mini;
 }
 
+function seedDisplayInfo(s_model) {
+    const ret = {};
+    ret["id"] = s_model.id;
+    ret["full_hexseed"] = s_model.full_hexseed;
+    ret["display_info"] = galleryImageData(s_model);
+    return ret;
+}
+
 exports.combined_traits = combined_traits;
 exports.condense_seed = condense_seed;
+exports.seedDisplayInfo = seedDisplayInfo;
