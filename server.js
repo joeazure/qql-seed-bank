@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 // API routes
 require("./app/routes/seed.routes")(app);
 require("./app/routes/wallet.routes")(app);
+require("./app/routes/search.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
