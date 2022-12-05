@@ -1,27 +1,40 @@
 const db = require("../models");
+const Sequelize = require('sequelize');
 const Seed = db.seed;
 const utils = require("../app_utils");
 
-exports.findOneById = (req, res) => {
-    const id = req.params.id;
+exports.getNRandom = (req, res) => {
+  console.log('Getting some randoms...');
+  const cnt = parseInt(req.params.count);
 
-    Seed.findByPk(id)
-      .then(data => {
-        if (data) {
-          res.send(data);
-        } else {
-          res.status(404).send({
-            message: `Cannot find Seed with id=${id}.`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving Seed with id=" + id
+  Seed.findAll(
+    { limit: cnt,
+      order: [Sequelize.fn( 'RAND' )], 
+      include: { all: true, nested: true},     
+    })
+    .then(data => {
+      if (data) {
+        console.log("Selected seeds. Generating output...");
+        seeds = [];
+        // Iterate over all the seeds
+        data.forEach(s => {
+          console.log("Adding a seed");
+          seeds.push(utils.condense_seed(s));
         });
-      }); 
-};
-
-exports.random100 = (req, res) => {
+        const returnData = {};
+        returnData["seeds"] = seeds;
+        res.send(returnData);
+      } else {
+        res.status(404).send({
+          message: "Cannot find any seeds"
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Seeds"
+      });
+    }); 
 
 };
