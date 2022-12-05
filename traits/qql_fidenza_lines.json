@@ -1,7 +1,7 @@
 {
     "bullseyeRings1": "On",
     "bullseyeRings3": "On",
-    "bullseyeRings7": "Off",
+    "bullseyeRings7": "On",
     "colorMode": "Stacked",
     "colorPalette": "Fidenza",
     "colorVariety": "High",
@@ -12,6 +12,6 @@
     "sizeVariety": "Constant",
     "spacing": "Dense",
     "structure": "Formation",
-    "turbulence": "None",
+    "turbulence": "High",
     "version": 1
   }
