@@ -1,0 +1,17 @@
+{
+    "flowField": "Vertical",
+    "turbulence": "None",
+    "margin": "Crisp",
+    "colorVariety": "Medium",
+    "colorMode": "Stacked",
+    "structure": "Orbital",
+    "bullseyeRings1": "On",
+    "bullseyeRings3": "Off",
+    "bullseyeRings7": "Off",
+    "ringThickness": "Mixed",
+    "ringSize": "Small",
+    "sizeVariety": "Constant",
+    "colorPalette": "Edinburgh",
+    "spacing": "Dense",
+    "version": 1
+  }

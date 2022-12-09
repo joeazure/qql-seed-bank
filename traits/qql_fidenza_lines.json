@@ -8,10 +8,10 @@
     "flowField": "Random Linear",
     "margin": "Wide",
     "ringSize": "Small",
-    "ringThickness": "Thin",
+    "ringThickness": "Mixed",
     "sizeVariety": "Constant",
     "spacing": "Dense",
     "structure": "Formation",
-    "turbulence": "High",
+    "turbulence": "Low",
     "version": 1
   }
