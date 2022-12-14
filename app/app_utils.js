@@ -4,7 +4,12 @@ const hostUrlPrefixes = config["hostUrlMappings"];
 
 function urlForLocation(location) {
     // Creates a url prefix for a given location model
-    return `${hostUrlPrefixes[location.host]}${location.folderPath}`;
+    const locConfig = hostUrlPrefixes[location.host];
+
+    const lastFolder = location.folderPath.substring(
+        location.folderPath.lastIndexOf(locConfig["httpLocation"]) + locConfig["httpLocation"].length+1
+    );
+    return `${locConfig.baseUrl}/${locConfig["httpLocation"]}/${lastFolder}`;
 }
 
 function galleryImageData(seed_model) {
@@ -15,7 +20,7 @@ function galleryImageData(seed_model) {
         height:  
     } */
     var url = urlForLocation(seed_model.render.output.location);
-    url = url + '/' + seed_model.render.output.filename;
+    url = `${url}/${seed_model.render.output.filename}.webp`; // WEBP files - even though not in DB filename
 
     const ret = {};
     ret["src"] = url;
@@ -63,6 +68,14 @@ function seedDisplayInfo(s_model) {
     return ret;
 }
 
+function minimalSeed(s_model) {
+    const ret =  galleryImageData(s_model);
+    ret["id" ] = s_model.id;
+    ret["hexseed"] = s_model.full_hexseed;
+    return ret;
+}
+
 exports.combined_traits = combined_traits;
 exports.condense_seed = condense_seed;
 exports.seedDisplayInfo = seedDisplayInfo;
+exports.minimalSeed = minimalSeed;

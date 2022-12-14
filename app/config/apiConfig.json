@@ -1,5 +1,8 @@
 {
     "hostUrlMappings": {
-        "StudioUltra" : "file://"
+        "StudioUltra" : {
+            "baseUrl" : "https://127.0.0.1",
+            "httpLocation" : "qql-outputs"
+        }
     }
 }
