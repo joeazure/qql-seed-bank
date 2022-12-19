@@ -12,6 +12,6 @@
     "sizeVariety": "Constant",
     "spacing": "Dense",
     "structure": "Formation",
-    "turbulence": "Low",
+    "turbulence": "None",
     "version": 1
   }
