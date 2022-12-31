@@ -1,0 +1,17 @@
+{
+    "flowField": "Circular",
+    "turbulence": "None",
+    "margin": "None",
+    "colorVariety": "High",
+    "colorMode": "Simple",
+    "structure": "Orbital",
+    "bullseyeRings1": "Off",
+    "bullseyeRings3": "On",
+    "bullseyeRings7": "Off",
+    "ringThickness": "Thick",
+    "ringSize": "Small",
+    "sizeVariety": "Wild",
+    "colorPalette": "Austin",
+    "spacing": "Dense",
+    "version": 1
+  }
