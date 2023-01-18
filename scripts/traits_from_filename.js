@@ -7,10 +7,18 @@ async function main(args) {
   }
   
   var seed = utils.seed_from_filename(filename);
-  console.log("Seed: " + seed + " ");
+  var retVal = {};
+  retVal["seed"] = seed;
+
+  //console.log("Seed: " + seed + " ");
   const traits = utils.traitsFromSeed(seed);
-  console.log("Traits:\n", JSON.stringify(traits, null, 2));
-  return JSON.stringify(traits, null, 2);
+  // FOR SOME REASON OK JSON DOES NOT LIKE INTS
+  traits["version"] = traits["version"].toString();
+  retVal["traits"] = traits;
+  //console.log(JSON.stringify(retVal, null, 2));
+  console.log(JSON.stringify(retVal));
+  //console.log(retVal);
+  //return JSON.stringify(traits, null, 2);
 }
 
 main(process.argv.slice(2)).catch((e) => {

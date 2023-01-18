@@ -103,7 +103,7 @@ async function main(parsedArgs) {
       const infoFile = path.join(outdir, basename + ".txt");
 
       // write files
-      const result = await webp.buffer2webpbuffer(imageData, "png", "-q 90");
+      const result = await webp.buffer2webpbuffer(imageData, "png", "-q 95");
       await fs.promises.writeFile(webpFile, result);
 
       await fs.promises.writeFile(infoFile, JSON.stringify(renderData, null, 2));
