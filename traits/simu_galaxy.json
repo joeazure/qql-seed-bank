@@ -1,0 +1,18 @@
+{
+    "flowField": "Circular",
+    "turbulence": "High",
+    "margin": "None",
+    "colorVariety": "Low",
+    "colorMode": "Zebra",
+    "structure": "Orbital",
+    "bullseyeRings1": "Off",
+    "bullseyeRings3": "Off",
+    "bullseyeRings7": "Off",
+    "ringThickness": "Mixed",
+    "ringSize": "Small",
+    "sizeVariety": "Wild",
+    "colorPalette": "Berlin",
+    "spacing": "Dense",
+    "version": 1
+  }
+  
