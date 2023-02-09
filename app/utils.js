@@ -127,7 +127,6 @@ function calcSeed(address, traits) {
   const salt = [...Array(24)].map(() => Math.floor(rng() * 16).toString(16)).join("");
   let seed = traitsLib.encodeTraits(`${address}${salt}`, traits);
   seed = `${seed.substring(0, 54)}${[...Array(4)].map(() => "f").join("")}${'1'}${seed.substring(59)}`;
-
   return seed;
 }
 

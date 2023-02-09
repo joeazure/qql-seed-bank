@@ -1,7 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const sharp = require('sharp');
 const { ArgumentParser } = require("argparse");
-const utils = require("../app/utils");
+const utils = require("../app/image_utils");
+const image_utils = require("../app/utils");
 const render = require("qql-headless/src/render");
 const webp = require('webp-converter'); // Don't forget mkdir node_modules/webp-converter/temp
 
@@ -18,6 +20,7 @@ async function main(parsedArgs) {
     const twoRings = parsedArgs.two_rings;
     const palette = parsedArgs.palette_override;
     const bgColorOverride = parsedArgs.bg_color_override;
+    const yunify = parsedArgs.yunify;
 
     let seedList = []; 
     let i = 0;
@@ -115,6 +118,14 @@ async function main(parsedArgs) {
       if (useDb) {
         await seed_db.insertRender(renderHost, fullOutdir, basename, seed, RENDER_WIDTH, renderData);
       }
+
+      // For fun ... yunify
+      if (yunify) {
+        const yun_filename = path.join(outdir, "yun_" + basename);
+        image_utils.overlayImage(sharp(imageData),
+          '/Users/jazure/GenerativeArt/qql-seed-db-app/resources/cow-2.png',
+          yun_filename);
+      }
     }
     console.timeEnd(timetaken);
 }
@@ -127,6 +138,7 @@ parser.add_argument("--traits", {help: "The named traits to render for (do not i
 parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", default: "no"});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
 parser.add_argument("--bg_color_override", {help: "Set to a valid color name for the palette specified in palette_override", default: "none"});
+parser.add_argument("--yunify", {help: "Set to true to YUNIFY an output", type: Boolean, default: false});
 parser.add_argument("--use_db", {help: "Set to true to store the seed data into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});
 parser.add_argument("count", {type: 'int', help: "The number of outputs to render"});
