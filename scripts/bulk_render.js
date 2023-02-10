@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require('sharp');
 const { ArgumentParser } = require("argparse");
-const utils = require("../app/image_utils");
-const image_utils = require("../app/utils");
+const utils = require("../app/utils");
+const image_utils = require("../app/image_utils");
 const render = require("qql-headless/src/render");
 const webp = require('webp-converter'); // Don't forget mkdir node_modules/webp-converter/temp
 
@@ -81,7 +81,7 @@ async function main(parsedArgs) {
 
     // setup database if use_db is true
     var seed_db;
-    if (useDb) {
+    if (useDb == true) {
       console.log("Setting up DB...");
       seed_db = require('../app/seed_db.js');
       console.log("DB Setup complete.");
@@ -123,7 +123,7 @@ async function main(parsedArgs) {
       if (yunify) {
         const yun_filename = path.join(outdir, "yun_" + basename);
         image_utils.overlayImage(sharp(imageData),
-          '/Users/jazure/GenerativeArt/qql-seed-db-app/resources/cow-2.png',
+          '/Users/jazure/Development/qql-seed-db-app/resources/cow-2.png',
           yun_filename);
       }
     }
