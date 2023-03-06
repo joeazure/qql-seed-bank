@@ -108,12 +108,27 @@ function generateSeed(target) {
     "expected address (bytes20) or seed (bytes32); got: " + target
   );
 }
-function randomSeed() {
+// function randomSeed() {
+//   const buf = Buffer.from(
+//       Array(32)
+//           .fill()
+//           .map(() => Math.random() * 256)
+//   );
+//   // Set "version 1" to get proper spirals.
+//   const version = 1;
+//   buf[26] = buf[27] = 0xff; // version sentinel
+//   buf[28] = (buf[28] & 0x0f) | (version << 4);
+//   return "0x" + buf.toString("hex");
+// }
+function randomSeed(address) {
+  if (!Buffer.isBuffer(address) || address.length !== 20)
+    throw new Error("expected address, got: " + address);
   const buf = Buffer.from(
-      Array(32)
-          .fill()
-          .map(() => Math.random() * 256)
+    Array(32)
+      .fill()
+      .map(() => Math.random() * 256)
   );
+  address.copy(buf);
   // Set "version 1" to get proper spirals.
   const version = 1;
   buf[26] = buf[27] = 0xff; // version sentinel
