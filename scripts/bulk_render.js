@@ -21,6 +21,7 @@ async function main(parsedArgs) {
     const palette = parsedArgs.palette_override;
     const bgColorOverride = parsedArgs.bg_color_override;
     const yunify = parsedArgs.yunify;
+    const minPoints = parsedArgs.min_points;
 
     let seedList = []; 
     let i = 0;
@@ -97,6 +98,13 @@ async function main(parsedArgs) {
           continue;
         }
       }
+      if (minPoints > 0) {
+        if (renderData["numPoints"] < minPoints) {
+          console.log(`Point count of ${renderData["numPoints"]}  below cutoff of ${minPoints}... skipping render.`);
+          continue
+        }
+      }
+
       // filenames
       const basename = `${new Date().toISOString()}-${seed}.png`;
       const webpName = basename + ".webp";
@@ -138,6 +146,7 @@ parser.add_argument("--traits", {help: "The named traits to render for (do not i
 parser.add_argument("--two_rings", {help: "Set to 'yes' to hack seed for 2-ring outputs", default: "no"});
 parser.add_argument("--palette_override", {help: "Set to a palette name or 'random' to override the palette in the named 'traits'"});
 parser.add_argument("--bg_color_override", {help: "Set to a valid color name for the palette specified in palette_override", default: "none"});
+parser.add_argument("--min_points", {help: "Set to positive number to only save outputs with at least this many points", type: Number, default: 0});
 parser.add_argument("--yunify", {help: "Set to true to YUNIFY an output", type: Boolean, default: false});
 parser.add_argument("--use_db", {help: "Set to true to store the seed data into the database", type: Boolean, default: false});
 parser.add_argument("--render_host", {help: "The hostname to use for saving to the database. Ignored when use-db is false."});

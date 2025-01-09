@@ -1,0 +1,17 @@
+{
+        "flowField": "Random Linear",
+        "turbulence": "None",
+        "margin": "Wide",
+        "colorVariety": "High",
+        "colorMode": "Stacked",
+        "structure": "Formation",
+        "bullseyeRings1": "Off",
+        "bullseyeRings3": "Off",
+        "bullseyeRings7": "Off",
+        "ringThickness": "Thin",
+        "ringSize": "Small",
+        "sizeVariety": "Wild",
+        "colorPalette": "Seoul",
+        "spacing": "Dense",
+        "version": "1"
+}
